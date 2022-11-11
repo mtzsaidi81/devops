@@ -7,7 +7,7 @@ pipeline {
             steps {
             
                 git branch: 'moetaz', url: 'https://github.com/mtzsaidi81/devops.git',
-                credentialsId:"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";
+                credentialsId:"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";
                 
             }
 }
