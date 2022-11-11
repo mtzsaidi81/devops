@@ -6,7 +6,7 @@ pipeline {
                 stage('git') {
             steps {
             
-                git branch: 'Ghaith', url: 'https://github.com/GhaithBh/Devops.git',
+                git branch: 'moetaz', url: 'https://github.com/mtzsaidi81/devops.git',
                 credentialsId:"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";
                 
             }
