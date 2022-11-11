@@ -81,11 +81,11 @@ pipeline{
     post {
                       success {
                         
-                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'adam.elamri@esprit.tn'
+                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
                       }
                       failure {
                         
-                            emailext body: 'Pipeline failure', subject: 'Pipeline failure', to: 'adam.elamri@esprit.tn'
+                            emailext body: 'Pipeline failure', subject: 'Pipeline failure', to: 'saidi.moetaz@esprit.tn'
                       }
               }
 }
