@@ -49,33 +49,33 @@ pipeline {
                 sh """mvn deploy """
             }
         }
-	    /*
+	    
          stage('Docker build')
         {
             steps {
-                 sh 'docker build --build-arg IP=0.0.0.0 -t ghaithbhs/devops  .'
+                 sh 'docker build --build-arg IP=0.0.0.0 -t moetaz081/achat  .'
             }
         }
         stage('Docker login')
         {
             steps {
-                sh 'echo $dockerhub_PSW | docker login -u ghaithbhs -p dckr_pat_PvFfLE0rm--tKJiRL1igKeLc2fQ'
+                sh 'echo $dockerhub_PSW | docker login -u moetaz081 -p dckr_pat_520jPRGk-4XZFRzJxcpnTPF4xE4)'
             }    
        
         }
       stage('Push') {
 
 			steps {
-				sh 'docker push ghaithbhs/devops'
+				sh 'docker push moetaz081/achat'
 			}
 		}
-        
+        /*
        stage('Run app With DockerCompose') {
               steps {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
               }
-	      */
+	     */
         stage('Sending email'){
            steps {
             mail bcc: '', body: '''Hello from Jenkins,
