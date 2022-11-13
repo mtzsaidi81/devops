@@ -43,12 +43,13 @@ pipeline {
                 '''
             }
         }
-	    /*
+	    
         stage('Nexus'){
             steps{
                 sh """mvn deploy """
             }
         }
+	    /*
          stage('Docker build')
         {
             steps {
