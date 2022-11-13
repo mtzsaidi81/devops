@@ -53,7 +53,7 @@ pipeline {
          stage('Docker build')
         {
             steps {
-                 sh 'docker build --build-arg IP=192.168.1.36/ -t moetaz081/achat  .'
+                 sh 'docker build --build-arg IP=192.168.1.36 -t moetaz081/achat  .'
             }
         }
         stage('Docker login')
