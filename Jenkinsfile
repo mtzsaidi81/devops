@@ -68,21 +68,17 @@ pipeline {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
               }
-	  /*    stage('Sending email'){
+	      stage('Sending email'){
            steps {
 		  
 		   emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
 		   
 		   }
-       }*/
+       }
 	
 
     }
 	    
-  post {
-                      success {
-                        
-                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
-                      }
+ 
                 
 }
