@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /*
+        
                 stage('git') {
             steps {
             
@@ -61,12 +61,12 @@ pipeline {
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
-		}
+		}*/
         
        stage('Run app With DockerCompose') {
               steps {
                   sh "docker-compose -f docker-compose.yml up -d  "
-              }*/
+              }
               }
 	      stage('Sending email'){
            steps {
