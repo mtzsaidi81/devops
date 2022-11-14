@@ -12,14 +12,7 @@ pipeline {
             }
 }
         
-        stage('database connection') {
-            steps{
-                sh '''
-                sudo docker stop mysql || true
-                sudo docker restart mysql || true
-                '''
-            }
-        }
+       
         stage('cleanig the project') {
             steps{
                 sh 'mvn clean'
@@ -63,12 +56,12 @@ pipeline {
             }    
        
         }
-      stage('Push') {
+    /*  stage('Push') {
 
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
-		}
+		}*/
         
        stage('Run app With DockerCompose') {
               steps {
