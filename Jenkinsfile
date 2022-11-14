@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-                stage('Git') {
+                stage('git') {
             steps {
             
                 git branch: 'moetaz', url: 'https://github.com/mtzsaidi81/devops.git',
@@ -12,9 +12,15 @@ pipeline {
             }
 }
         
-       
-        
-        stage('Cleaning the project') {
+        stage('database connection') {
+            steps{
+                sh '''
+                sudo docker stop mysql || true
+                sudo docker restart mysql || true
+                '''
+            }
+        }
+        stage('cleanig the project') {
             steps{
                 sh 'mvn clean'
             }
@@ -30,7 +36,7 @@ pipeline {
                 sh 'mvn  test'
             }
         }
-        stage ('Code Quality Check via SonarQube') {
+        stage ('SonarQube analysis') {
             steps{
                 sh '''
                 mvn sonar:sonar
@@ -57,20 +63,19 @@ pipeline {
             }    
        
         }
-	    
-     stage('Push') {
+      stage('Push') {
 
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
-		
-	
-           stage('Run app With DockerCompose') {
+		}
+        
+       stage('Run app With DockerCompose') {
               steps {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
               }
-
+	     
         stage('Sending email'){
            steps {
             mail bcc: '', body: '''Hello from Jenkins,
@@ -78,8 +83,7 @@ pipeline {
             Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'mtzsaidi81@gmail.com'
             }
        }
-
+       
 
     }
-
 }
