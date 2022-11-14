@@ -71,7 +71,7 @@ pipeline {
 	      stage('Sending email'){
            steps {
 		  
-		   emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
+		   emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'mtzsaidi81@gmail.com'
 		   
 		   }
        }
