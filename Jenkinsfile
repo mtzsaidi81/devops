@@ -13,7 +13,7 @@ pipeline {
 }
         
        
-        }
+        
         stage('Cleaning the project') {
             steps{
                 sh 'mvn clean'
