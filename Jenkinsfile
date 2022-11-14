@@ -58,12 +58,12 @@ pipeline {
        
         }
 	    
-     /* stage('Push') {
+     stage('Push') {
 
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
-		}*/ 
+		
 	
        stage('Run app With DockerCompose') {
               steps {
@@ -75,7 +75,7 @@ pipeline {
        
        
 
-    }
+    
 
 
 
