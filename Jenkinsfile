@@ -12,15 +12,9 @@ pipeline {
             }
 }
         
-        stage('database connection') {
-            steps{
-                sh '''
-                sudo docker stop mysql || true
-                sudo docker restart mysql || true
-                '''
-            }
+       
         }
-        stage('MVN clean') {
+        stage('Cleaning the project') {
             steps{
                 sh 'mvn clean'
             }
