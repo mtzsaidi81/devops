@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-                stage('git') {
+                stage('Git') {
             steps {
             
                 git branch: 'moetaz', url: 'https://github.com/mtzsaidi81/devops.git',
@@ -20,7 +20,7 @@ pipeline {
                 '''
             }
         }
-        stage('cleanig the project') {
+        stage('MVN clean') {
             steps{
                 sh 'mvn clean'
             }
@@ -36,7 +36,7 @@ pipeline {
                 sh 'mvn  test'
             }
         }
-        stage ('SonarQube analysis') {
+        stage ('Code Quality Check via SonarQube') {
             steps{
                 sh '''
                 mvn sonar:sonar
@@ -63,28 +63,34 @@ pipeline {
             }    
        
         }
-	    /*
-      stage('Push') {
+	    
+     /* stage('Push') {
 
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
 		}
-        */
+ */       
        stage('Run app With DockerCompose') {
               steps {
                   sh "docker-compose -f docker-compose.yml up -d  "
               }
               }
 	     
-        stage('Sending email'){
-           steps {
-            mail bcc: '', body: '''Hello from Jenkins,
-            Devops Pipeline returned success.
-            Best Regards''', cc: '', from: '', replyTo: '', subject: 'Devops Pipeline', to: 'mtzsaidi81@gmail.com'
-            }
+       
        }
        
 
     }
+
+post {
+                      success {
+                        
+                            emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
+                      }
+                      failure {
+                        
+                            emailext body: 'Pipeline failure', subject: 'Pipeline failure', to: 'saidi.moetaz@esprit.tn'
+                      }
+              }
 }
