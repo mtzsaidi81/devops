@@ -63,8 +63,8 @@ pipeline {
 			steps {
 				sh 'docker push moetaz081/achat'
 			}
-		}
- */       
+		}*/ 
+	
        stage('Run app With DockerCompose') {
               steps {
                   sh "docker-compose -f docker-compose.yml up -d  "
@@ -87,4 +87,5 @@ post {
                             emailext body: 'Pipeline failure', subject: 'Pipeline failure', to: 'saidi.moetaz@esprit.tn'
                       }
               }
+
 }
