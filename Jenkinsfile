@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-          /*      stage('git') {
+        /*        stage('git') {
             steps {
             
                 git branch: 'moetaz', url: 'https://github.com/mtzsaidi81/devops.git',
@@ -56,7 +56,7 @@ pipeline {
             }    
        
         }
-      stage('Push') {
+    stage('Push') {
 
 			steps {
 				sh 'docker push moetaz081/achat'
@@ -69,9 +69,11 @@ pipeline {
               }
               }*/
 	      stage('Sending email'){
-           post {
-           emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
-            }
+           steps {
+		   post{
+		   emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'saidi.moetaz@esprit.tn'
+		   }
+		   }
        }
 	
 
